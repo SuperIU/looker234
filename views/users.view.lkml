@@ -96,6 +96,20 @@ measure: avg {
         {% endif %}
       ;;
   }
+
+  dimension: city_1{
+    type: string
+    label: "City 1"
+    sql:  ${TABLE}.city ;;
+
+  }
+
+  dimension: city_2{
+    type: string
+    label: "City 2"
+    sql:  ${TABLE}.city ;;
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
