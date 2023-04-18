@@ -34,4 +34,9 @@ explore: order_items {
   }
 }
 
-explore: users {}
+explore: users {
+    access_filter: {
+    field: users.first_name
+    user_attribute: karan_test
+  }
+}
