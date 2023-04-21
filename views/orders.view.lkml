@@ -46,6 +46,12 @@ view: orders {
     {% endif %} ;;
   }
 
+  measure: count_distinct_users_id {
+    type: count_distinct
+    sql: ${TABLE}.id ;;
+    filters: [created_date: "7 days"]
+  }
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

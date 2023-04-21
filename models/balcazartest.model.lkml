@@ -33,14 +33,15 @@ explore: order_items {
     relationship: many_to_one
   }
   access_filter: {
-    field: users.created_date
-    user_attribute: karan_test
-  }
-  access_filter: {
     field: users.first_name
     user_attribute: karan_test
   }
 }
 
 
-explore: users {}
+explore: users {
+  access_filter: {
+  field: users.first_name
+   user_attribute: karan_test
+  }
+}
