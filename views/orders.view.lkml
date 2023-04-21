@@ -36,6 +36,14 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [detail*]
+    html:
+    {% if value > 0 %}
+    <span style="color:darkgreen;">{{ rendered_value }}</span>
+    {% elsif value <0 %}
+    <span style="color:goldenrod;">{{ rendered_value }}</span>
+    {% else %}
+    <span style="color:darkred;">{{ rendered_value }}</span>
+    {% endif %} ;;
   }
 
   # ----- Sets of fields for drilling ------
