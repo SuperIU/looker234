@@ -36,6 +36,20 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [detail*]
+    html:
+    {% if value > 0 %}
+    <span style="color:darkgreen;">{{ rendered_value }}</span>
+    {% elsif value <0 %}
+    <span style="color:goldenrod;">{{ rendered_value }}</span>
+    {% else %}
+    <span style="color:darkred;">{{ rendered_value }}</span>
+    {% endif %} ;;
+  }
+
+  measure: count_distinct_users_id {
+    type: count_distinct
+    sql: ${TABLE}.id ;;
+    filters: [created_date: "7 days"]
   }
 
   # ----- Sets of fields for drilling ------

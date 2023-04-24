@@ -6,6 +6,7 @@ view: users {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+
   }
 
   dimension: age {
@@ -71,6 +72,42 @@ view: users {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+measure: sum {
+  type: sum
+  sql: ${id} ;;
+}
+measure: avg {
+  type: average
+  sql: ${id} ;;
+}
+  parameter: liq_test {
+    type: unquoted
+    description: "liquid"
+    suggest_explore: users
+    suggest_dimension: users.gender
+  }
+  dimension: parmeter {
+    type: string
+    sql: {% if liq_test._parameter_value == "m" %}
+        ${gender}
+        {% else %}
+        ${city}
+        {% endif %}
+      ;;
+  }
+
+  dimension: city_1{
+    type: string
+    label: "City 1"
+    sql:  ${TABLE}.city ;;
+
+  }
+
+  dimension: city_2{
+    type: string
+    label: "City 2"
+    sql:  ${TABLE}.city ;;
   }
 
   # ----- Sets of fields for drilling ------
