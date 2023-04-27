@@ -12,6 +12,7 @@ view: orders {
     type: time
     timeframes: [
       raw,
+      hour,
       time,
       date,
       week,
@@ -30,7 +31,13 @@ view: orders {
   dimension: user_id {
     type: number
     # hidden: yes
+    value_format_name: percent_2
     sql: ${TABLE}.user_id ;;
+  }
+
+  dimension: audio_dimension {
+    sql: ${TABLE}.id;;
+    html: <audio controls preload="metadata" controlsList="novolume" style="width:250px;"><source src="https://pagalfree.com/musics/128-Kesariya%20-%20Brahmastra%20128%20Kbps.mp3" type="audio/mp3"/></audio> ;;
   }
 
   measure: count {

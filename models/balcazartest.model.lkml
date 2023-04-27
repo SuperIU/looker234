@@ -13,12 +13,18 @@ persist_with: balcazartest_default_datagroup
 explore: flights {}
 
 explore: orders {
+  always_filter: {
+   # filters: [id: "33", status: "substr('{{ _user_attributes['email']}} ', 1, 2)"]
+  filters: [id: "33", status: "{{ _user_attributes['email']}}"]
+
+  }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
 }
+explore: timestamp_test {}
 
 explore: order_items {
   join: orders {
