@@ -33,6 +33,12 @@ view: orders {
     sql: ${TABLE}.user_id ;;
   }
 
+  measure: count1 {
+    type: number
+  }
+
+
+
   measure: count {
     type: count
     drill_fields: [detail*]
